@@ -87,3 +87,4 @@ r = requests.post(
 )
 
 r.raise_for_status()
+assert status == 1
