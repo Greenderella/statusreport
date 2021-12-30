@@ -19,4 +19,6 @@ jobs:
           python -m pip install -r requirements.txt
            
       - name: "Run report"
+        env:
+          X_WEBHOOK_KEY: ${{secrets.X_WEBHOOK_KEY}}
         run: "python ./status.py"
