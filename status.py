@@ -67,6 +67,7 @@ try:
             assert item_username == "username"
             assert item_password == "password"
             status = 1
+
         except Exception as error:
             print("An degradation occurred: {}".format(error))
             status = 0
@@ -74,6 +75,7 @@ try:
     except Exception as error:
         print("An outage occurred: {}".format(error))
         status = -1
+
 finally:
     browser.quit()
 
