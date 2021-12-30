@@ -37,10 +37,11 @@ try:
         password.send_keys(os.environ.get("masterpassword"))
         password.send_keys(Keys.RETURN)
 
-
         try:
             an_item = WebDriverWait(browser, 10).until(
-                expected_conditions.presence_of_element_located((By.LINK_TEXT, "Test item"))
+                expected_conditions.presence_of_element_located(
+                    (By.LINK_TEXT, "Test item")
+                )
             )
             an_item.click()
 
