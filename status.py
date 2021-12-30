@@ -12,7 +12,7 @@ if os.environ.get("CI") != None:
     options.headless = True
 
 browser = Firefox(
-    service=Service("/home/alex/workspace/statusreport/geckodriver"), options=options
+    service=Service("./geckodriver"), options=options
 )
 
 try:
