@@ -19,6 +19,7 @@ if os.environ.get("CI") != None:
     options.headless = True
 
 browser = Firefox(service=Service("./geckodriver"), options=options)
+browser.set_page_load_timeout(15)
 
 try:
     try:
@@ -36,11 +37,11 @@ try:
         password.send_keys(os.environ.get("masterpassword"))
         password.send_keys(Keys.RETURN)
 
-        an_item = WebDriverWait(browser, 10).until(
-            expected_conditions.presence_of_element_located((By.LINK_TEXT, "Test item"))
-        )
 
         try:
+            an_item = WebDriverWait(browser, 10).until(
+                expected_conditions.presence_of_element_located((By.LINK_TEXT, "Test item"))
+            )
             an_item.click()
 
             item_username = (
