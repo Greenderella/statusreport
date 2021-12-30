@@ -42,6 +42,10 @@ try:
         password.send_keys(Keys.RETURN)
 
         try:
+            WebDriverWait(browser, 10).until(
+                expected_conditions.title_is("My Vault | Bitwarden Web Vault")
+            )
+
             an_item = WebDriverWait(browser, 10).until(
                 expected_conditions.presence_of_element_located(
                     (By.LINK_TEXT, "Test item")
