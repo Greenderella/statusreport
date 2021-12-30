@@ -12,6 +12,6 @@ CRONJOB to check and report to Hund.io
 ## TODO
 [x] Save a screenshot as an artifact in github when something goes wrong
 [] Change hound key and URL for the real environment (+create a webhook component)
-[] Use a Web Driver installer to be platform independent (currently the web driver is for Linux 64)
+[x] Use a Web Driver installer to be platform independent (currently the web driver is for Linux 64)
 [x] Better logging reporting
 [] Configure the Bitwarden account to skip captchas

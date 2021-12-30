@@ -14,6 +14,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
+from webdriver_manager.firefox import GeckoDriverManager
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 load_dotenv()
@@ -23,7 +25,7 @@ options = Options()
 if os.environ.get("CI") != None:
     options.headless = True
 
-browser = Firefox(service=Service("./geckodriver"), options=options)
+browser = Firefox(service=Service(GeckoDriverManager().install()), options=options)
 browser.set_page_load_timeout(15)
 
 

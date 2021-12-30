@@ -16,7 +16,9 @@ jobs:
           python-version: '3.x'
       - uses: actions/cache@v2
         with:
-          path: ${{ env.pythonLocation }}
+          path: |
+           ${{ env.pythonLocation }}
+           ~/.wdm
           key: ${{ env.pythonLocation }}-${{ hashFiles('requirements.txt') }}        
       - name: "Install dependencies"
         run: |
