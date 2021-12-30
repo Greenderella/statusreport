@@ -1,5 +1,7 @@
 import requests
 import os
+import logging
+
 from dotenv import load_dotenv
 from selenium.webdriver import Firefox
 from selenium.webdriver.firefox.service import Service
@@ -10,6 +12,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 load_dotenv()
 
 status = -1
@@ -69,17 +73,19 @@ try:
             status = 1
 
         except Exception as error:
-            print("An degradation occurred: {}".format(error))
+            logger.info("An degradation occurred!")
+            logger.exception(error)
             status = 0
 
     except Exception as error:
-        print("An outage occurred: {}".format(error))
+        logger.info("An outage occurred!")
+        logger.exception(error)
         status = -1
 
 finally:
     browser.quit()
 
-print("Reporting a status: {}".format(status))
+logger.info("Reporting a status: {}".format(status))
 r = requests.post(
     "https://bitwardentest.hund.io/state_webhook/watchdog/61cd8a01386fb37c3d04b049",
     headers={"X-WEBHOOK-KEY": os.environ.get("X_WEBHOOK_KEY")},
