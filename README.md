@@ -10,8 +10,8 @@ CRONJOB to check and report to Hund.io
 1. PROFIT
 
 ## TODO
-- [] Change houd key and URL for the real environment (+create a webhook component)
-- [] Configure the Bitwarden account to skip captchas
+- [ ] Change houd key and URL for the real environment (+create a webhook component)
+- [ ] Configure the Bitwarden account to skip captchas
 - [x] Save a screenshot as an artifact in github when something goes wrong
 - [x] Use a Web Driver installer to be platform independent (currently the web driver is for Linux 64)
 - [x] Better logging reporting
