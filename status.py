@@ -41,16 +41,20 @@ def get(selector, or_else):
         return WebDriverWait(browser, 10).until(
             expected_conditions.presence_of_element_located(selector)
         )
-    except Exception as error:
-        logger.info(or_else)
-        logger.exception(error)
-        sys.exit(or_else)
+    except Exception as e:
+        logger.exception(e)
+        error(or_else)
 
 
 def assertEqual(value, expected, or_else):
     if value != expected:
-        logger.info(or_else)
-        sys.exit(or_else)
+        error(or_else)
+
+
+def error(or_else):
+    browser.save_screenshot("screenshot.png")
+    logger.info(or_else)
+    sys.exit(or_else)
 
 
 try:
@@ -60,9 +64,9 @@ try:
     assert browser.title == "Bitwarden Web Vault"
 
     username = get((By.ID, "email"), "Couldn't get login email input")
-    password = get((By.ID, "masterPassword2"), "Couldn't get login password input")
-
     username.send_keys(os.environ.get("EMAIL"))
+
+    password = get((By.ID, "masterPassword"), "Couldn't get login password input")
     password.send_keys(os.environ.get("MASTER_PASSWORD"))
     password.send_keys(Keys.RETURN)
 

@@ -28,3 +28,9 @@ jobs:
           EMAIL: ${{secrets.EMAIL}}
           MASTER_PASSWORD: ${{secrets.MASTER_PASSWORD}}
         run: "python ./status.py"
+      - uses: actions/upload-artifact@v2
+        with:
+          name: screenshot-${{github.run_id}}.png
+          path: screenshot.png
+          if-no-files-found: ignore
+          retention-days: 1
