@@ -31,7 +31,6 @@ jobs:
       - uses: actions/upload-artifact@v2
         if: failure()
         with:
-          name: screenshot-${{github.run_id}}.png
+          name: screenshot-${{github.run_id}}
           path: screenshot.png
-          if-no-files-found: ignore
           retention-days: 1
