@@ -24,5 +24,7 @@ jobs:
            
       - name: "Run report"
         env:
-          X_WEBHOOK_KEY: ${{secrets.X_WEBHOOK_KEY}}
+          WEBHOOK_KEY: ${{secrets.WEBHOOK_KEY}}
+          EMAIL: ${{secrets.EMAIL}}
+          MASTER_PASSWORD: ${{secrets.MASTER_PASSWORD}}
         run: "python ./status.py"

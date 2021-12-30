@@ -37,8 +37,8 @@ try:
             expected_conditions.presence_of_element_located((By.ID, "masterPassword"))
         )
 
-        username.send_keys(os.environ.get("email"))
-        password.send_keys(os.environ.get("masterpassword"))
+        username.send_keys(os.environ.get("EMAIL"))
+        password.send_keys(os.environ.get("MASTER_PASSWORD"))
         password.send_keys(Keys.RETURN)
 
         try:
@@ -88,7 +88,7 @@ finally:
 logger.info("Reporting a status: {}".format(status))
 r = requests.post(
     "https://bitwardentest.hund.io/state_webhook/watchdog/61cd8a01386fb37c3d04b049",
-    headers={"X-WEBHOOK-KEY": os.environ.get("X_WEBHOOK_KEY")},
+    headers={"X-WEBHOOK-KEY": os.environ.get("WEBHOOK_KEY")},
     params={"status": status},
 )
 
