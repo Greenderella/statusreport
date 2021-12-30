@@ -14,3 +14,4 @@ CRONJOB to check and report to Hund.io
 [] Change hound key and URL for the real environment (+create a webhook component)
 [] Use a Web Driver installer to be platform independent (currently the web driver is for Linux 64)
 [] Better logging reporting
+[] Configure the Bitwarden account to skip captchas
